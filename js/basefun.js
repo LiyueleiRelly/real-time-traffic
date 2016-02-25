@@ -137,7 +137,7 @@ function roaddraw(section){
     });
     polyline.setMap(map);
 }
-
+//添加省份坐标
 function addprovince(){
     map.plugin(['AMap.DistrictSearch'],function(){
         var opts = {
