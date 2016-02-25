@@ -1,0 +1,35 @@
+html{height:100%}
+body{height:100%;margin:0px;padding:0px}
+#map{
+    height:100%;
+    width:80%;
+    float:left;
+}
+
+#right-function{
+    float:left;
+    height:100%;
+    width:20%;
+}
+
+.label-name{
+    font-size:18px;
+}
+.function{
+    padding:15px 5px;
+    border-bottom:1px dashed #999;
+}
+.function .glyphicon{
+    font-size:13px;
+    color:#999;
+}
+.function .table{
+    font-size:12px;
+    margin:0px;
+}
+.function .province-name{
+    cursor:pointer;
+}
+#message{
+    border-bottom:0px;
+}
