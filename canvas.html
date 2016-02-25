@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+
+</head>
+<body>
+<canvas id="c"></canvas>
+
+
+<script type="text/javascript">
+    var canvas = document.getElementById("c");
+    canvas.width = 1536;
+    canvas.height = 1065;
+    var context=canvas.getContext("2d");
+    var width=canvas.width;
+    var height=canvas.height;
+    var maxlat=18.506847;
+    var maxlng=109.023788;
+    var minlat=18.420142;
+    var minlng=108.891952;
+    var scalex=width/(maxlng-minlng);
+    var scaley=height/(maxlat-minlat);
+    function callAjax(Ajaxurl,Ajaxtype,Ajaxdata,callback){
+
+        $.ajax({url:Ajaxurl,type:Ajaxtype,dataType:"json",async:true,data:Ajaxdata, success:callback,});
+    }
+
+    callAjax("test.php","get",null,callback);
+    function callback(data) {
+
+        var obj = eval(data);
+        for(var i=0;i<data.length;i++)
+        {
+            hui(obj[i]);
+        }
+    }
+
+    function hui(s){
+        var sx=( s.splong-minlng)*scalex;
+        var sy=(maxlat- s.splat)*scaley;
+        var tx=( s.tplong-minlng)*scalex;
+        var ty=(maxlat- s.tplat)*scaley;
+        context.strokeStyle="#17BF00";
+        context.moveTo(sx,sy);
+        context.lineTo(tx,ty);
+        context.stroke();
+    }
+</script>
+</body>
+</html>
